@@ -19,12 +19,11 @@ public class MotionSensorActivity extends AppCompatActivity {
     SensorEventListener sel = new SensorEventListener(){
         public void onAccuracyChanged(Sensor sensor, int accuracy) {}
         public void onSensorChanged(SensorEvent event) {
-
             float[] values = event.values;
             String xAxis ="x : " + values[0];
             String yAxis ="y : " + values[1];
             String zAxis ="z : " + values[2];
-            tvShowAxis.setText(xAxis + " : " + yAxis + " : " + zAxis);
+            tvShowAxis.setText(xAxis + "\n" + yAxis + "\n" + zAxis);
         }
     };
 
