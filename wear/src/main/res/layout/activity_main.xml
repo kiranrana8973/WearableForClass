@@ -20,8 +20,9 @@
                 android:id="@+id/etFirst"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="0"
-                android:textSize="30sp" />
+                android:text="1"
+                android:hint="Type some text"
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/btnShow"
@@ -36,3 +37,5 @@
         </LinearLayout>
 
 </android.support.wear.widget.BoxInsetLayout>
+
+

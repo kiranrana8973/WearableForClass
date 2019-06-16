@@ -21,12 +21,16 @@ public class TimerActivity extends WearableActivity {
 
         new CountDownTimer(30000, 1000) {
             public void onTick(long millisUntilFinished) {
-                tvSeconds.setText("seconds Remaining: " + millisUntilFinished / 1000);
+                tvSeconds.setText("Seconds Remaining: " + millisUntilFinished / 1000);
             }
 
             public void onFinish() {
-                tvSeconds.setText("done!");
+                tvSeconds.setText("Done!");
             }
         }.start();
     }
 }
+
+
+
+

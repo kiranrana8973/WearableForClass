@@ -1,15 +1,13 @@
 package com.example.wearableapplication;
 
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.wearable.activity.WearableActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class MainActivity extends WearableActivity {
+public class DisplayWordActivity extends WearableActivity {
 
     private TextView tvOutput;
     private Button btnShow;
@@ -18,7 +16,7 @@ public class MainActivity extends WearableActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_display_word);
 
         tvOutput = findViewById(R.id.tvOutput);
         btnShow = findViewById(R.id.btnShow);
@@ -34,9 +32,4 @@ public class MainActivity extends WearableActivity {
         // Enables Always-on
         setAmbientEnabled();
     }
-
-
 }
-
-
-

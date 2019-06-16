@@ -7,31 +7,33 @@
     android:layout_height="match_parent"
     android:background="@color/dark_grey"
     android:padding="@dimen/box_inset_layout_padding"
-    tools:context=".TimerActivity"
+    tools:context=".DisplayWordActivity"
     tools:deviceIds="wear">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/inner_frame_layout_padding"
-       >
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvSeconds"
-            android:textSize="15sp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
+
+        <EditText
+            android:id="@+id/etFirst"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Seconds remaining : 0" />
+            android:hint="Type some text"
+            android:textSize="20sp" />
 
         <Button
-            android:id="@+id/btnSend"
-            android:layout_width="wrap_content"
+            android:id="@+id/btnShow"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Send" />
+            android:text="Click" />
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/tvOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
 </android.support.wear.widget.BoxInsetLayout>
-
