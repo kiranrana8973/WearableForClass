@@ -6,30 +6,33 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.widget.TextView;
 
-public class ScreenOnOffActivity extends AppCompatActivity {
+public class ProximityActivity extends AppCompatActivity {
     private SensorManager sensorManager;
+    private TextView tvProximity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_on_off);
+        setTitle("Proximity sensor");
 
+        tvProximity = findViewById(R.id.tvProximity);
         proximity();
     }
 
-    private void proximity(){
+    private void proximity() {
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 
         SensorEventListener proxilistener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
-                if(event.values[0] >= -4 && event.values[0] <= 4){
-                    Toast.makeText(ScreenOnOffActivity.this, "near", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(ScreenOnOffActivity.this, "far", Toast.LENGTH_SHORT).show();
+                if (event.values[0] <= 4) {
+                    tvProximity.setText("Object is near");
+                } else {
+                    tvProximity.setText("Object is far");
                 }
             }
 
@@ -38,6 +41,6 @@ public class ScreenOnOffActivity extends AppCompatActivity {
 
             }
         };
-        sensorManager.registerListener(proxilistener,sensor,SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(proxilistener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 }

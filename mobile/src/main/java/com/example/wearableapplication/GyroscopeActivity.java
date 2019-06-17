@@ -6,30 +6,32 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class GyroActivity extends AppCompatActivity {
+public class GyroscopeActivity extends AppCompatActivity {
     private SensorManager sensorManager;
+    private TextView tvGyro;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gyro);
-        sensorInstance();
-
+        setTitle("Gyroscope Sensor");
+        tvGyro = findViewById(R.id.tvGyro);
+        sensorGyro();
     }
 
-    private void sensorInstance(){
+    private void sensorGyro() {
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
-
         SensorEventListener gyrolistener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
-                if (event.values[1] < 0){
-                    Toast.makeText(GyroActivity.this, "left", Toast.LENGTH_SHORT).show();
-                }
-                else if (event.values[1] > 0){
-                    Toast.makeText(GyroActivity.this, "right", Toast.LENGTH_SHORT).show();
+                if (event.values[1] < 0) {
+                    tvGyro.setText("Left");
+                } else if (event.values[1] > 0) {
+                    tvGyro.setText("Right");
                 }
             }
 
@@ -38,7 +40,11 @@ public class GyroActivity extends AppCompatActivity {
 
             }
         };
+        if (sensor != null) {
+            sensorManager.registerListener(gyrolistener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
 
-        sensorManager.registerListener(gyrolistener,sensor,SensorManager.SENSOR_DELAY_FASTEST);
+        } else {
+            Toast.makeText(this, "No sensor found", Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -11,18 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ScreenOnOffActivity">
+        <activity android:name=".AddNoActivity">
+
+        </activity>
+        <activity android:name=".ProximityActivity">
+
+        </activity>
+        <activity android:name=".LightSensorActivity" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LightSensorActivity" />
-        <activity android:name=".GyroActivity"></activity>
-        <activity android:name=".AccelerometerActivity">
-
-        </activity>
+        <activity android:name=".GyroscopeActivity"></activity>
+        <activity android:name=".AccelerometerActivity"></activity>
         <activity android:name=".SensorActivity" />
         <activity android:name=".MainActivity" />
     </application>
