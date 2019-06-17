@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class MotionSensorActivity extends AppCompatActivity {
+public class AccelerometerActivity extends AppCompatActivity {
 
     private TextView tvShowAxis;
     private SensorManager sensorManager;
@@ -23,7 +23,7 @@ public class MotionSensorActivity extends AppCompatActivity {
             String xAxis ="x : " + values[0];
             String yAxis ="y : " + values[1];
             String zAxis ="z : " + values[2];
-            tvShowAxis.setText(xAxis + "\n" + yAxis + "\n" + zAxis);
+            tvShowAxis.setText(xAxis  + " " + yAxis + " " + zAxis);
         }
     };
 
@@ -35,11 +35,11 @@ public class MotionSensorActivity extends AppCompatActivity {
         tvShowAxis = findViewById(R.id.tvShowAxis);
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
-        List<Sensor> lstSensor = sensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
+       Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
-        if(lstSensor.size()>0)
+        if(sensor!=null)
         {
-            sensorManager.registerListener(sel,(Sensor) lstSensor.get(0),SensorManager.SENSOR_DELAY_NORMAL);
+            sensorManager.registerListener(sel,sensor,SensorManager.SENSOR_DELAY_NORMAL);
 
         }
         else
@@ -47,5 +47,4 @@ public class MotionSensorActivity extends AppCompatActivity {
             Toast.makeText(this, "No sensor found", Toast.LENGTH_SHORT).show();
         }
     }
-
 }
